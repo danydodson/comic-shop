@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require("mongoose")
 
 const comicSchema = new Schema(
   {
@@ -10,12 +10,12 @@ const comicSchema = new Schema(
     condition: String,
     synopsis: String,
     price: Number,
-    reviewIds: [{ type: Schema.Types.ObjectId, ref: 'Review'}],
+    reviewIds: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
     ratingsArray: Array,
     quantity: Number
   }
-);
+)
 
-const Comic = model("Comic", comicSchema);
+const Comic = model("Comic", comicSchema)
 
-module.exports = Comic;
+module.exports = Comic

@@ -21,7 +21,7 @@ const comic = [
     ratingsArray: [],
     quantity: 4
   },
-  
+
   {
     title: "Les Cigares du Pharaon",
     img: "https://i.imgur.com/46d3BBh.jpg",
@@ -35,13 +35,13 @@ const comic = [
     ratingsArray: [],
     quantity: 6
   },
-    
+
   {
     title: "Action Comics No. 40",
     img: "https://i.imgur.com/TRwqBIx.jpg",
     author: "Fred Ray",
     comicSeries: "Action Comics",
-    year: "1938" ,
+    year: "1938",
     condition: "Used",
     synopsis: "A millionaire agrees to pay $100,000 to charity if Superman helps to straighten out his wayward daughter who spends money as if it were water as various gambling establishments. Only when an emergency arises does the girl see herself in a different vein.",
     price: 199.9,
@@ -138,7 +138,7 @@ const comic = [
     price: 89.99,
     reviewIds: [],
     ratingsArray: [],
-    quantity: 9 
+    quantity: 9
   }
 ]
 
@@ -146,30 +146,30 @@ const createSeeds = async function () {
   try {
     const connect = await mongoose.connect(MONGO_URI)
     console.log(`Connected to database: ${connect.connections[0].name}`)
-//---------------------comics seeds --------------
+    //---------------------comics seeds --------------
     const deleteAll = await Comic.deleteMany()
     console.log("Comic Db clean")
 
     const createAll = await Comic.create(comic)
     console.log("comics created")
-//---------------------comics seeds --------------
-//---------------------users seeds --------------
+    //---------------------comics seeds --------------
+    //---------------------users seeds --------------
     const deleteAllUser = await User.deleteMany()
     console.log("User Db clean")
 
-   // const createAllUser = await User.create(users)
+    // const createAllUser = await User.create(users)
     //console.log("users created")
-//---------------------users seeds --------------
-//---------------------review seeds --------------
-  const deleteAllreview = await Review.deleteMany()
-  console.log("reviews Db clean")
+    //---------------------users seeds --------------
+    //---------------------review seeds --------------
+    const deleteAllreview = await Review.deleteMany()
+    console.log("reviews Db clean")
 
     //const createAllreview = await Review.create(reviews)
     //console.log("reviews created")
-//---------------------review seeds --------------
+    //---------------------review seeds --------------
 
     const dbClose = await mongoose.connection.close()
-    
+
     console.log("Seeds created")
   } catch (err) {
     console.log(`Error creating the seeds: ${err}`)

@@ -1,46 +1,46 @@
-const express = require("express");
-const router = express.Router();
+const express = require("express")
+const router = express.Router()
 
 // ℹ️ Handles password encryption
-const bcrypt = require("bcrypt");
-const mongoose = require("mongoose");
+const bcrypt = require("bcrypt")
+const mongoose = require("mongoose")
 
 // How many rounds should bcrypt run the salt (default - 10 rounds)
-const saltRounds = 10;
+const saltRounds = 10
 
 // Require the User model in order to interact with the database
-const User = require("../models/User.model");
+const User = require("../models/User.model")
 const Cart = require("../models/ShoppingCart.model")
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
-const isLoggedOut = require("../middleware/isLoggedOut");
-const isLoggedIn = require("../middleware/isLoggedIn");
+const isLoggedOut = require("../middleware/isLoggedOut")
+const isLoggedIn = require("../middleware/isLoggedIn")
 
 // GET /auth/signup
 router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("auth/signup");
-});
+  res.render("auth/signup")
+})
 
 // POST /auth/signup
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password } = req.body
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
     res.status(400).render("auth/signup", {
       errorMessage:
         "All fields are mandatory. Please provide your username, email and password.",
-    });
+    })
 
-    return;
+    return
   }
 
   if (password.length < 6) {
     res.status(400).render("auth/signup", {
       errorMessage: "Your password needs to be at least 6 characters long.",
-    });
+    })
 
-    return;
+    return
   }
 
   //   ! This regular expression checks password for special characters and minimum length
@@ -67,47 +67,47 @@ router.post("/signup", isLoggedOut, (req, res) => {
     })
     .then((user) => {
       console.log("user created")
-      return Cart.create({userId: user._id})
+      return Cart.create({ userId: user._id })
     })
     .then((cart) => {
       console.log("cart created")
-      return User.findByIdAndUpdate(cart.userId, {cart: cart._id})
+      return User.findByIdAndUpdate(cart.userId, { cart: cart._id })
     })
     .then((user) => {
       console.log("user updated")
-      res.redirect("/auth/login");
+      res.redirect("/auth/login")
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.status(500).render("auth/signup", { errorMessage: error.message });
+        res.status(500).render("auth/signup", { errorMessage: error.message })
       } else if (error.code === 11000) {
         res.status(500).render("auth/signup", {
           errorMessage:
             "Username and email need to be unique. Provide a valid username or email.",
-        });
+        })
       } else {
-        next(error);
+        next(error)
       }
-    });
-});
+    })
+})
 
 // GET /auth/login
 router.get("/login", isLoggedOut, (req, res) => {
-  res.render("auth/login");
-});
+  res.render("auth/login")
+})
 
 // POST /auth/login
 router.post("/login", isLoggedOut, (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password } = req.body
 
   // Check that username, email, and password are provided
   if (username === "" || email === "" || password === "") {
     res.status(400).render("auth/login", {
       errorMessage:
         "All fields are mandatory. Please provide username, email and password.",
-    });
+    })
 
-    return;
+    return
   }
 
   // Here we use the same logic as above
@@ -115,7 +115,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   if (password.length < 6) {
     return res.status(400).render("auth/login", {
       errorMessage: "Your password needs to be at least 6 characters long.",
-    });
+    })
   }
 
   // Search the database for a user with the email submitted in the form
@@ -125,8 +125,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
       if (!user) {
         res
           .status(400)
-          .render("auth/login", { errorMessage: "Wrong credentials." });
-        return;
+          .render("auth/login", { errorMessage: "Wrong credentials." })
+        return
       }
 
       // If user is found based on the username, check if the in putted password matches the one saved in the database
@@ -136,33 +136,33 @@ router.post("/login", isLoggedOut, (req, res, next) => {
           if (!isSamePassword) {
             res
               .status(400)
-              .render("auth/login", { errorMessage: "Wrong credentials." });
-            return;
+              .render("auth/login", { errorMessage: "Wrong credentials." })
+            return
           }
 
           // Add the user object to the session object
-          req.session.currentUser = user.toObject();
+          req.session.currentUser = user.toObject()
           // Remove the password field
-          delete req.session.currentUser.password;
+          delete req.session.currentUser.password
 
-          res.redirect("/");
+          res.redirect("/")
         })
-        .catch((err) => next(err)); // In this case, we send error handling to the error handling middleware.
+        .catch((err) => next(err)) // In this case, we send error handling to the error handling middleware.
     })
-    .catch((err) => next(err));
-});
+    .catch((err) => next(err))
+})
 
 // GET /auth/logout  will stay at the same page if not protected
 router.post("/logout", isLoggedIn, (req, res) => {
   const originRoute = req.headers.referer.split(":3000")[1]
   req.session.destroy((err) => {
     if (err) {
-      res.status(500).render("auth/logout", { errorMessage: err.message });
-      return;
+      res.status(500).render("auth/logout", { errorMessage: err.message })
+      return
     }
 
-    res.redirect(originRoute);
-  });
-});
+    res.redirect(originRoute)
+  })
+})
 
-module.exports = router;
+module.exports = router
