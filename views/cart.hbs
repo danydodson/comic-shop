@@ -1,0 +1,48 @@
+<h2 class="section-title" >Shopping cart</h2>
+<div class="cartContainer">
+{{#if carritoItems}}
+    {{#each carritoItems }}
+        <div class="item-card">
+            <h3>{{this.comicId.title}}</h3>
+            <h4>${{this.comicId.price}}</h4>
+            <img class="cart-img" src="{{this.comicId.img}}" alt="">
+            <form id="quantity" action="/cart/{{_id}}/duplicate" method="post">
+            <label for="quantity"></label>
+            <input id="number" type="number" name="comicQuantity" value="{{this.quantity}}" min="1" max="9">
+            
+            <button type="submit">Update <br> Quantity</button>
+            </form>
+            <form action="/cart/{{_id}}/delete" method="post">
+                <button id="delete" type="submit">
+                    <svg width="15" height="20" viewBox="0 0 21 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.5 24C1.5 25.65 2.85 27 4.5 27H16.5C18.15 27 19.5 25.65 19.5 24V6H1.5V24ZM5.19 13.32L7.305 11.205L10.5 14.385L13.68 11.205L15.795 13.32L12.615 16.5L15.795 19.68L13.68 21.795L10.5 18.615L7.32 21.795L5.205 19.68L8.385 16.5L5.19 13.32ZM15.75 1.5L14.25 0H6.75L5.25 1.5H0V4.5H21V1.5H15.75Z" fill="white"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    {{/each}}
+        <form id="checkout" action="cart/checkout" method="post">
+            <div class="paying-btns">
+                <button id="promo-btn"><h4>Do you have a promo code?</h4></button>
+                <h3>Subtotal <br> ${{roundedTotal}}</h3>
+                <button id="checkout-btn" type="submit">CHECKOUT</button>
+                <div class="secured">
+                    <p>Secured by Shoppy.li</p>
+                    <svg width="25" height="19" viewBox="0 0 32 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M28.8 0H3.2C1.424 0 0.016 1.44625 0.016 3.25L0 22.75C0 24.5538 1.424 26 3.2 26H28.8C30.576 26 32 24.5538 32 22.75V3.25C32 1.44625 30.576 0 28.8 0ZM28.8 22.75H3.2V13H28.8V22.75ZM28.8 6.5H3.2V3.25H28.8V6.5Z" fill="#3F7B90"/>
+                    </svg>
+                </div>
+            </div>
+        </form>
+</div>
+{{else}}
+    <div class="empty">
+        <h2>Ooops, seems like your cart is empty!</h2>
+        <img src="/images/empty.png" alt="">
+        <a href="/catalogue" class="shop-btn">Go to the catalogue</a>
+    </div>
+{{/if}}
+</div>
+
+
+

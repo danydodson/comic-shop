@@ -1,0 +1,25 @@
+<h2 id="login-signup" >Sign Up</h2>
+<div id="form">
+  <form class="login-card" action="/auth/signup" method="POST">
+
+    <label> <p>Username</p>
+      <input type="text" name="username" placeholder="Your username" />
+    </label>
+
+    <label> <p>Email</p>
+      <input type="email" name="email" placeholder="Your email" />
+    </label>
+
+    <label> <p>Password</p>
+      <input type="password" name="password" placeholder="Your password" />
+    </label>
+
+    <button type="submit">SIGN UP</button>
+
+
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>
+<h4 id="login-details">Are you an user? Welcome back! 🙌🏼 <a href="/auth/login">LOG IN</a> here</h4>

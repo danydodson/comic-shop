@@ -1,0 +1,19 @@
+<div class="user-container">
+<div class="hello-user">
+    <h2>Hello, <strong> {{findUser.username}}</strong>!</h2>
+    <p>We are happy to see you again!</p>
+    <img id="profile-pic" src="/images/streamlinehq-all-good-bruxelles-999.svg" alt="">
+</div>
+<h3>Check your <strong>purchase history</strong></h3>
+<div class="purchase-history">
+    {{#each findUser.purchases}}
+    <div class="purchases-card">
+        <h4>{{title}}</h4>
+        <img class="purchases-img" src="{{img}}" alt="">
+        <a href="{{_id}}/review">Leave a review</a>
+    </div>
+{{/each}}
+</div>
+</div>
+
+

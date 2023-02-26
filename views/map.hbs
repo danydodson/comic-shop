@@ -1,0 +1,44 @@
+<h2 class="section-title">Don't be shy, contact us!</h2>
+<form class="review-form"  action="/map" method="post">
+  <label> Your question:
+    <input type="text" required>
+  </label>
+  <label
+    for="email">Enter your E-mail address:
+  </label>
+  <input id="email" type="email" id="email"size="30" required>
+  <button type="submit"> submit question </button>
+</form>
+
+<form class="review-form" action="/map" method="post">
+  <p>
+    <a href="tel:123-456-7890"> Click here to call </a>
+    <label for="phone">or enter your phone number and we will call you back!</label>
+  </p>
+    <input id="email" type="tel" id="phone" name="phone"required>  
+    <button type="submit"> submit number </button>
+</form>
+
+<h2 class="section-title">Or else, find us at</h2>
+<div class="directions"> 
+  <small>C. Viñeta Antigua,  279
+    08009 Barcelona </small> <br>
+  <small>Opening Hours: 09:00 - 18:00</small>
+</div>
+{{!-- Display the map--}}
+<div class="location" id="map"></div>
+
+{{!-- Create hidden elements to store the display style of the map--}}
+<div class="hidden map-center"> {{mapCenter}}  </div>
+<div class="hidden map-zoom">  {{mapZoom}}  </div>
+
+{{!-- Create hidden element to stroe the position of the marker --}}
+<div class="hidden pos">  {{location}}  </div>
+
+<div class="marker">
+  <svg width="56" height="80" viewBox="0 0 56 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M28 0C12.52 0 0 12.52 0 28C0 34.96 2 41.48 5.64 47.36C9.44 53.52 14.44 58.8 18.28 64.96C20.16 67.96 21.52 70.76 22.96 74C24 76.2 24.84 80 28 80C31.16 80 32 76.2 33 74C34.48 70.76 35.8 67.96 37.68 64.96C41.52 58.84 46.52 53.56 50.32 47.36C54 41.48 56 34.96 56 28C56 12.52 43.48 0 28 0ZM28 39C22.48 39 18 34.52 18 29C18 23.48 22.48 19 28 19C33.52 19 38 23.48 38 29C38 34.52 33.52 39 28 39Z" fill="#077B1B"/>
+  </svg>
+</div>
+
+<script src="/js/map.js"></script>
