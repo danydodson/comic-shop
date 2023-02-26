@@ -1,11 +1,10 @@
-<div class="product-display">
-    {{#each allComics}}
-    <div class="product-card">
-    <a href="catalogue/{{_id}}"><img id="catalogue-img" src="{{img}}" alt=""></a>
-    <h2>{{title}}</h2>
-    <p>${{price}}</p>
-    <a href="catalogue/{{_id}}"> <button>See details</button></a>
+<div class='product-display'>
+  {{#each allComics}}
+    <div class='product-card'>
+      <a href='catalogue/{{_id}}'><img id='catalogue-img' src='{{img}}' alt='' /></a>
+      <h2>{{title}}</h2>
+      <p>${{price}}</p>
+      <a href='catalogue/{{_id}}'> <button>See details</button></a>
     </div>
-    {{/each}}
+  {{/each}}
 </div>
-

@@ -27,4 +27,4 @@ document.addEventListener("DOMContentLoaded", () => {
   new mapboxgl.Marker(markerDiv)
     .setLngLat(posS)
     .addTo(map)
-});
+})

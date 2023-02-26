@@ -1,33 +1,33 @@
-<div class="product-details">
-    <div class="product-details-card">
-    <img src="{{comic.img}}" alt="">
+<div class='product-details'>
+  <div class='product-details-card'>
+    <img src='{{comic.img}}' alt='' />
     <h2>{{comic.title}}</h2>
     <h4>Year: {{comic.year}}</h4>
     <h4>Condition: {{comic.condition}}</h4>
     <h3>${{comic.price}}</h3>
-    <form action="/catalogue/{{comic._id}}/add" method="post">
-    <button type="submit">ADD TO CART</button>
+    <form action='/catalogue/{{comic._id}}/add' method='post'>
+      <button type='submit'>ADD TO CART</button>
     </form>
     <p>{{comic.synopsis}}</p>
-    <br>
-    <hr>
-    <br>
+    <br />
+    <hr />
+    <br />
 
-        <div class="reviews">
-            <h2>Your reviews</h2>
-                <div class="average">
-                        <img src="/images/Captura_de_pantalla_2022-11-10_a_las_15.05.36-removebg-preview.png" alt="">
-                    {{#if averageRating}}
-                        <h3>Average rating: <br> {{averageRating}} ⭐️</h3>
-                    {{/if}}
-                </div>
-            {{#each comic.reviewIds}}
-            <h3>{{title}}</h3>
-            <h4> Rating {{rating}} ⭐️</h4>
-            <h4> Username: {{username}} </h4>
-            <p>{{content}}</p>
-            <br>
-            {{/each}}
-        </div>
+    <div class='reviews'>
+      <h2>Your reviews</h2>
+      <div class='average'>
+        <img src='/images/Captura_de_pantalla_2022-11-10_a_las_15.05.36-removebg-preview.png' alt='' />
+        {{#if averageRating}}
+          <h3>Average rating: <br /> {{averageRating}} ⭐️</h3>
+        {{/if}}
+      </div>
+      {{#each comic.reviewIds}}
+        <h3>{{title}}</h3>
+        <h4> Rating {{rating}} ⭐️</h4>
+        <h4> Username: {{username}} </h4>
+        <p>{{content}}</p>
+        <br />
+      {{/each}}
     </div>
+  </div>
 </div>

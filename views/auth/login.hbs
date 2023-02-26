@@ -1,25 +1,27 @@
-<h2 id="login-signup">Log In</h2>
-<div id="login-form">
-  <form class="login-card" action="/auth/login" method="POST">
+<h2 id='login-signup'>Log In</h2>
+<div id='login-form'>
+  <form class='login-card' action='/auth/login' method='POST'>
 
-    <label> <p>Username</p> 
-      <input type="text" name="username" placeholder="Your username" />
+    <label>
+      <p>Username</p>
+      <input type='text' name='username' placeholder='Your username' />
     </label>
 
-    <label> <p>Email</p>
-      <input type="email" name="email" placeholder="Your email" />
+    <label>
+      <p>Email</p>
+      <input type='email' name='email' placeholder='Your email' />
     </label>
 
-    <label> <p>Password</p>
-      <input type="password" name="password" placeholder="Your password" />
+    <label>
+      <p>Password</p>
+      <input type='password' name='password' placeholder='Your password' />
     </label>
 
-    <button type="submit">LOG IN</button>
-
+    <button type='submit'>LOG IN</button>
 
     {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
+      <p class='error'>{{errorMessage}}</p>
     {{/if}}
   </form>
 </div>
-<h4 id="login-details">Aren't a user yet? No worries, <a href="/auth/signup">SIGN UP</a> here!</h4>
+<h4 id='login-details'>Aren't a user yet? No worries, <a href='/auth/signup'>SIGN UP</a> here!</h4>

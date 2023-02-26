@@ -1,15 +1,17 @@
-
-<form class="review-form" action="/{{comicToReview._id}}/review/post" method="post">
+<form class='review-form' action='/{{comicToReview._id}}/review/post' method='post'>
   <h2>Leave a review about <strong>{{comicToReview.title}} by {{comicToReview.author}}</strong> here</h2>
-  <label> Name your review
-    <input type="text" name="title" value="Title"/>
+  <label>
+    Name your review
+    <input type='text' name='title' value='Title' />
   </label>
-  <label> Rating
-    <input type="number" id="quantity" name="quantity" placeholder="5" min="1" max="5">
+  <label>
+    Rating
+    <input type='number' id='quantity' name='quantity' placeholder='5' min='1' max='5' />
   </label>
-  <label> Description
-    <textarea name="description"  cols="30" rows="4"> {{description}}</textarea>
+  <label>
+    Description
+    <textarea name='description' cols='30' rows='4'> {{description}}</textarea>
   </label>
 
-  <button type="submit"> Post your review </button>
+  <button type='submit'> Post your review </button>
 </form>

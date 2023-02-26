@@ -5,7 +5,7 @@ const Comic = require("../models/Comics.model")
 const User = require("../models/User.model")
 const Review = require("../models/Reviews.model")
 
-const MONGO_URI = "mongodb://localhost:27017/vintageComicShop"
+const MONGO_URI = "mongodb://localhost:27017/comics"
 
 const comic = [
   {
@@ -141,6 +141,8 @@ const comic = [
     quantity: 9
   }
 ]
+
+mongoose.set('strictQuery', false)
 
 const createSeeds = async function () {
   try {
