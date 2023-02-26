@@ -1,7 +1,7 @@
-# Vintage Comics e-commerce project by Carol González & Yaron Peres
+# Comics e-commerce project
 
 ---
-Check live site: https://qmic.fly.dev/ 🚀
+<!-- Check live site: https://qmic.fly.dev/ 🚀 -->
 
 --- 
 
