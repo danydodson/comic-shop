@@ -20,6 +20,7 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.8",
     "nodemon": "^2.0.20"
   }
 }

@@ -1,0 +1,13 @@
+.vscode
+.gitignore
+.dockerignore
+docker-compose*
+Dockerfile*
+node_modules
+coverage
+.DS_Store
+.env
+.env.example
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
