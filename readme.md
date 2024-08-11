@@ -4,7 +4,7 @@
 <!-- Check live site: https://qmic.fly.dev/ 🚀 -->
 
 --- 
-
+ 
 ## **What is this project?**
 - A web application (mobile first, still working on responsive features)
 - User can create account, login, view profile of purchase history and leave reviews
